@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { GlobalContext } from "./GlobalContext";
 
 const ProductsCategories = () => {
   const [categories, setCategories] = useState([]);
   const [loader, setLoader] = useState(true);
+
+  const { setCategoryProducts } = useContext(GlobalContext);
 
   useEffect(() => {
     getProductCategories();
@@ -23,6 +26,7 @@ const ProductsCategories = () => {
 
   const categoryList = (productData) => {
     console.log(productData);
+    setCategoryProducts(productData);
   };
 
   return (
