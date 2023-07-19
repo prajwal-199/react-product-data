@@ -13,20 +13,14 @@ const ProductsCategories = () => {
   }, []);
 
   const getProductCategories = async () => {
-    await axios.get("/products_categories").then((resp) => {
+    await axios.post("/products_categories").then((resp) => {
       setCategories(resp.data);
       setLoader(false);
-      console.log(
-        resp.data.children_data[0].children_data.map((data) =>
-          console.log(data)
-        )
-      );
     });
   };
 
   const categoryList = (productData) => {
-    console.log(productData);
-    setCategoryProducts(productData);
+    setCategoryProducts(productData.id);
   };
 
   return (
@@ -35,9 +29,9 @@ const ProductsCategories = () => {
         <span className="loader"></span>
       ) : (
         <div>
-          {categories.children_data[0].children_data.map((data) => (
+          {categories.all_filter[0].options.map((data) => (
             <div key={data.id}>
-              <p onClick={() => categoryList(data)}>{data.name}</p>
+              <p onClick={() => categoryList(data)}>{data.attribute_name}</p>
             </div>
           ))}
         </div>

@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/products_categories":
-        "https://magento.curlnationkw.com/rest/V1/categories",
+        "https://pp.curlnationkw.com/rest/V1/listproducts?lang=en&store=KWD",
       "/products_api":
         "https://magento.curlnationkw.com/rest/V1/products?searchCriteria[filter_groups]",
     },

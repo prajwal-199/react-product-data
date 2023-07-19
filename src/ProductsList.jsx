@@ -24,22 +24,16 @@ const ProductsList = () => {
 
   const productDetails = (data) => {
     setProductInfo(data);
-    console.log(data);
     navigate("/product-details");
   };
 
-  console.log(
-    productData[0].extension_attributes.category_links.map((data) =>
-      console.log(data.category_id)
-    )
-  );
   return (
     <div className="product-card-container">
       {loader ? (
         productData
           .filter((item) =>
-            item.extension_attributes.category_links.map(
-              (data) => data.category_id
+            item.extension_attributes.category_links.find(
+              (x) => x.category_id === categoryProducts
             )
           )
           .map((data) => {
