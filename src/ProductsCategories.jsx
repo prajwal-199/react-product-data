@@ -16,6 +16,7 @@ const ProductsCategories = () => {
     await axios.post("/products_categories").then((resp) => {
       setCategories(resp.data);
       setLoader(false);
+      console.log(resp.data);
     });
   };
 
@@ -28,7 +29,7 @@ const ProductsCategories = () => {
       {loader ? (
         <span className="loader"></span>
       ) : (
-        <div>
+        <div className="categories-list">
           {categories.all_filter[0].options.map((data) => (
             <div key={data.id}>
               <p onClick={() => categoryList(data)}>{data.attribute_name}</p>
